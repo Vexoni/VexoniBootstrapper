@@ -70,7 +70,7 @@ private:
 #define FIREFOXREGKEY               "@nsroblox.roblox.com/launcher"
 #define FIREFOXREGKEY64             "@nsroblox.roblox.com/launcher64"
 
-#define PLAYERLINKNAME_CUR          "ROBLOX Player"
+#define PLAYERLINKNAME_CUR          "Dyzion Player"
 #define PLAYERLINKNAMELEGACY        "Play Roblox"
 
 // MFC Studio names
@@ -81,14 +81,14 @@ private:
 // QT Studio names
 #define STUDIOQTEXENAME             "RobloxStudioBeta.exe"
 #define STUDIOBOOTSTAPPERNAMEBETA   "RobloxStudioLauncherBeta.exe"
-#define STUDIOQTLINKNAME_CUR        "ROBLOX Studio"
-#define STUDIOQTLINKNAME            "ROBLOX Studio Beta"
-#define STUDIOQTLINKNAME20          "ROBLOX Studio 2.0"
-#define STUDIOQTLINKNAME20BETA      "ROBLOX Studio 2.0 Beta"
-#define STUDIOQTLINKNAME2013        "ROBLOX Studio 2013"
+#define STUDIOQTLINKNAME_CUR        "Dyzion Studio"
+#define STUDIOQTLINKNAME            "Dyzion Studio Beta"
+#define STUDIOQTLINKNAME20          "Dyzion Studio 2.0"
+#define STUDIOQTLINKNAME20BETA      "Dyzion Studio 2.0 Beta"
+#define STUDIOQTLINKNAME2013        "Dyzion Studio 2013"
 
 // Player names
-#define  PLAYEREXENAME				"RobloxPlayerBeta.exe"
+#define  PLAYEREXENAME				"DyzionPlayerBeta.exe"
 
 // Version URL string names (setup.roblox.com/XXX) - replace XXX with these values to get the most recent version
 // Unfortunately these have to be defined globally so Player knows how to find the latest version of Studio to download

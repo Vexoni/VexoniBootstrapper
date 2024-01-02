@@ -30,7 +30,7 @@ static const TCHAR* BootstrapperMutexName   = _T("www.roblox.com/bootstrapper");
 static const TCHAR* StartRobloxAppMutex     = _T("www.roblox.com/startRobloxApp");
 static const TCHAR* LauncherFileName        = _T("RobloxProxy.dll");
 static const TCHAR* LauncherFileName64      = _T("RobloxProxy64.dll");
-static const TCHAR* FriendlyName            = _T("ROBLOX");
+static const TCHAR* FriendlyName            = _T("Dyzion");
 static const TCHAR* CLSID_Launcher          = _T("{76D50904-6780-4c8b-8986-1A7EE0B1716D}");
 static const TCHAR* CLSID_Launcher64        = _T("{DEE03C2B-0C0C-41A9-9877-FD4B4D7B6EA3}");
 static const TCHAR* AppID_Launcher          = _T("{664B192B-D17A-4921-ABF9-C6F6264E5110}");
@@ -487,7 +487,7 @@ bool BootstrapperClient::NeedPreDeployRun()
 	}
 
 	CRegKey key;
-	if (SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\ROBLOX Corporation\\Roblox"), KEY_READ)))
+	if (SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\Dyzion Corporation\\Roblox"), KEY_READ)))
 	{
 		TCHAR buf[MAX_PATH];
 		ULONG bufSize = MAX_PATH;
@@ -539,7 +539,7 @@ void BootstrapperClient::RunPreDeploy()
 		DeployComponents(true, false);
 
 		CRegKey key;
-		if (SUCCEEDED(key.Create(HKEY_CURRENT_USER, _T("Software\\ROBLOX Corporation\\Roblox"))))
+		if (SUCCEEDED(key.Create(HKEY_CURRENT_USER, _T("Software\\Dyzion Corporation\\Roblox"))))
 		{
 			key.SetStringValue(_T("LastPreVersion"), convert_s2w(preVersion).c_str());
 			LOG_ENTRY("Setting last pre deploy version entry");
@@ -699,7 +699,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 
 	setStage(10);
 
-	message("Starting ROBLOX...");
+	message("Starting Dyzion...");
 
 	LOG_ENTRY("Creating event");
 	CEvent robloxStartedEvent(NULL, TRUE, FALSE, _T("www.roblox.com/robloxStartedEvent"));
