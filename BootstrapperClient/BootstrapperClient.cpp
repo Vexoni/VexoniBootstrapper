@@ -26,8 +26,8 @@
 
 static const TCHAR* BootstrapperFileName    = _T("RobloxPlayerLauncher.exe");
 static const TCHAR* RobloxAppFileName		= _T(PLAYEREXENAME);
-static const TCHAR* BootstrapperMutexName   = _T("www.roblox.com/bootstrapper");
-static const TCHAR* StartRobloxAppMutex     = _T("www.roblox.com/startRobloxApp");
+static const TCHAR* BootstrapperMutexName   = _T("www.dyzion.com/bootstrapper");
+static const TCHAR* StartRobloxAppMutex     = _T("www.dyzion.com/startRobloxApp");
 static const TCHAR* LauncherFileName        = _T("RobloxProxy.dll");
 static const TCHAR* LauncherFileName64      = _T("RobloxProxy64.dll");
 static const TCHAR* FriendlyName            = _T("Dyzion");
@@ -702,7 +702,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 	message("Starting Dyzion...");
 
 	LOG_ENTRY("Creating event");
-	CEvent robloxStartedEvent(NULL, TRUE, FALSE, _T("www.roblox.com/robloxStartedEvent"));
+	CEvent robloxStartedEvent(NULL, TRUE, FALSE, _T("www.dyzion.com/robloxStartedEvent"));
 	LOG_ENTRY("Resetting event");
 	robloxStartedEvent.Reset();
 
@@ -1005,7 +1005,7 @@ void BootstrapperClient::deployRobloxProxy(bool commitData)
 
 		// For IE8:
 		CRegKey allowedDomainsKey = CreateKey(key, _T("AllowedDomains"));
-		CreateKey(allowedDomainsKey, _T("roblox.com"));
+		CreateKey(allowedDomainsKey, _T("dyzion.com"));
 		CreateKey(allowedDomainsKey, _T("robloxlabs.com"));
 	}
 
