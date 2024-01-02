@@ -750,6 +750,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 					url = format_string(_T("http://%s"), url.c_str());
 				}
 				LOG_ENTRY1("Redirectings to page url=%S", url.c_str());
+				// modification to make this like 2017+ bootstrappers, where it doesn't open anything automatically after install
 				if (!fromInstall)
 				{
 					ShellExecute(0, _T("open"), url.c_str(), 0, 0, 1);
