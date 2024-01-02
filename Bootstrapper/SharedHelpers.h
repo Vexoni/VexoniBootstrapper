@@ -79,7 +79,7 @@ private:
 #define STUDIOLINKNAMELEGACY        "Roblox Studio"    // wrong case
 
 // QT Studio names
-#define STUDIOQTEXENAME             "RobloxStudioBeta.exe"
+#define STUDIOQTEXENAME             "DyzionStudioBeta.exe"
 #define STUDIOBOOTSTAPPERNAMEBETA   "RobloxStudioLauncherBeta.exe"
 #define STUDIOQTLINKNAME_CUR        "Dyzion Studio"
 #define STUDIOQTLINKNAME            "Dyzion Studio Beta"
