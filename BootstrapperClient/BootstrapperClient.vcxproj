@@ -173,7 +173,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(CONTRIB_PATH)\SDK\Lib\Iphlpapi.lib;$(CONTRIB_PATH)\SDK\Lib\taskschd.lib;$(CONTRIB_PATH)\SDK\Lib\mstask.lib;$(CONTRIB_PATH)\boost_1_56_0\stage\lib\libboost_thread-vc110-mt-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\stage\lib\libboost_thread-vc110-mt-gd-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\stage\lib\libboost_thread-vc110-mt-sgd-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\stage\lib\libboost_thread-vc110-mt-s-1_56.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)RobloxPlayerLauncher.exe</OutputFile>
+      <OutputFile>$(OutDir)DyzionPlayerLauncher.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
