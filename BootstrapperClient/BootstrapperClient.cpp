@@ -236,7 +236,7 @@ HRESULT BootstrapperClient::SheduleTaskWinVista()
 	GetUserName(name, &bufSize);
 
 	regInfo->put_Author(name);
-	regInfo->put_Description(L"This tasks helps Roblox game be updated.");
+	regInfo->put_Description(L"This tasks helps Dyzion game be updated.");
 
 	CComPtr<ITriggerCollection> triggerCollection;
 	hr = task->get_Triggers(&triggerCollection);
@@ -487,7 +487,7 @@ bool BootstrapperClient::NeedPreDeployRun()
 	}
 
 	CRegKey key;
-	if (SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\Dyzion Corporation\\Roblox"), KEY_READ)))
+	if (SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\Dyzion Corporation\\Dyzion"), KEY_READ)))
 	{
 		TCHAR buf[MAX_PATH];
 		ULONG bufSize = MAX_PATH;
@@ -539,7 +539,7 @@ void BootstrapperClient::RunPreDeploy()
 		DeployComponents(true, false);
 
 		CRegKey key;
-		if (SUCCEEDED(key.Create(HKEY_CURRENT_USER, _T("Software\\Dyzion Corporation\\Roblox"))))
+		if (SUCCEEDED(key.Create(HKEY_CURRENT_USER, _T("Software\\Dyzion Corporation\\Dyzion"))))
 		{
 			key.SetStringValue(_T("LastPreVersion"), convert_s2w(preVersion).c_str());
 			LOG_ENTRY("Setting last pre deploy version entry");
@@ -691,7 +691,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 	CTimedMutexLock lock(mutex);
 	while (lock.Lock(1) == WAIT_TIMEOUT )
 	{
-		LOG_ENTRY("Another process is starting Roblox. Abandoning startRobloxApp");
+		LOG_ENTRY("Another process is starting Dyzion. Abandoning startRobloxApp");
 		return;
 	}
 
@@ -802,7 +802,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 	// TODO: Allow cancel of start process???
 	Dialog()->ShowCancelButton(CMainDialog::CancelHide);
 
-	// wait for Roblox to start
+	// wait for Dyzion to start
 	// This event is set in MainFrm.cpp
 	if (waitForApp) 
 	{
@@ -1043,8 +1043,8 @@ void BootstrapperClient::registerFirefoxPlugin(const TCHAR* id, bool is64Bits)
 	CRegKey key = CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s"), id).c_str(), NULL, is64Bits);
 
 	key.SetStringValue(_T("ProductName"), _T("Launcher"));
-	key.SetStringValue(_T("Description"), _T("Roblox Launcher"));
-	key.SetStringValue(_T("Vendor"), _T("Roblox"));
+	key.SetStringValue(_T("Description"), _T("Dyzion Launcher"));
+	key.SetStringValue(_T("Vendor"), _T("Dyzion"));
 	key.SetStringValue(_T("Version"), _T("1"));
 
 	if (is64Bits)
@@ -1053,7 +1053,7 @@ void BootstrapperClient::registerFirefoxPlugin(const TCHAR* id, bool is64Bits)
 		key.SetStringValue(_T("Path"), (programDirectory() + _T("\\NPRobloxProxy.dll")).c_str());
 
 	CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s\\MimeTypes"), id).c_str(), NULL, is64Bits);
-	CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s\\MimeTypes\\application/x-vnd-roblox-launcher"), id).c_str(), NULL, is64Bits);
+	CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s\\MimeTypes\\application/x-vnd-Dyzion-launcher"), id).c_str(), NULL, is64Bits);
 }
 
 void BootstrapperClient::unregisterFirefoxPlugin(const TCHAR* id, bool is64Bits)
@@ -1224,7 +1224,7 @@ void BootstrapperClient::DoUninstallApp(CRegKey &hk)
 	LOG_ENTRY("BootstrapperClient::DoUninstallApp - UnregisterProtocolHandler");
 	UnregisterProtocolHandler(GetProtocolHandlerUrlScheme());
 
-	LOG_ENTRY("Deleting roblox auto updater");
+	LOG_ENTRY("Deleting Dyzion auto updater");
 	UninstallRobloxUpdater();
 
 	LOG_ENTRY("BootstrapperClient::DoUninstallApp - deleteCurVersionKeys");
