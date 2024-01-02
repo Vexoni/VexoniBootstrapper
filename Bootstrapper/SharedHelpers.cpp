@@ -276,7 +276,7 @@ std::wstring getQTStudioCode()
 void appendEnvironmentToProtocolScheme(std::wstring& scheme, const std::string baseUrl)
 {
 	std::vector<std::string> baseHostUrlParts = splitOn(baseUrl, '.');
-	if (baseHostUrlParts[1] != "roblox")
+	if (baseHostUrlParts[1] != "dyzion")
 	{
 		scheme += convert_s2w("-" + baseHostUrlParts[1]);
 	}
@@ -284,7 +284,7 @@ void appendEnvironmentToProtocolScheme(std::wstring& scheme, const std::string b
 
 std::wstring getPlayerProtocolScheme(const std::string& baseUrl)
 {
-	std::wstring scheme = _T("roblox-player");
+	std::wstring scheme = _T("dyzion-player");
 
 	appendEnvironmentToProtocolScheme(scheme, baseUrl);
 
@@ -293,7 +293,7 @@ std::wstring getPlayerProtocolScheme(const std::string& baseUrl)
 
 std::wstring getQTStudioProtocolScheme(const std::string& baseUrl)
 {
-	std::wstring scheme = _T("roblox-studio");
+	std::wstring scheme = _T("dyzion-studio");
 
 	appendEnvironmentToProtocolScheme(scheme, baseUrl);
 
