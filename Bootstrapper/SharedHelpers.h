@@ -67,8 +67,8 @@ private:
 #define LLOG_ENTRY3(logger, msg, a1, a2, a3) logger.write_logentry(msg, reinterpret_cast<const void*>(a1), reinterpret_cast<const void*>(a2), reinterpret_cast<const void*>(a3))
 #define LLOG_ENTRY4(logger, msg, a1, a2, a3, a4) logger.write_logentry(msg, reinterpret_cast<const void*>(a1), reinterpret_cast<const void*>(a2), reinterpret_cast<const void*>(a3), reinterpret_cast<const void*>(a4))
 
-#define FIREFOXREGKEY               "@nsroblox.roblox.com/launcher"
-#define FIREFOXREGKEY64             "@nsroblox.roblox.com/launcher64"
+#define FIREFOXREGKEY               "@nsroblox.dyzion.com/launcher"
+#define FIREFOXREGKEY64             "@nsroblox.dyzion.com/launcher64"
 
 #define PLAYERLINKNAME_CUR          "Dyzion Player"
 #define PLAYERLINKNAMELEGACY        "Play Roblox"
@@ -90,7 +90,7 @@ private:
 // Player names
 #define  PLAYEREXENAME				"DyzionPlayerBeta.exe"
 
-// Version URL string names (setup.roblox.com/XXX) - replace XXX with these values to get the most recent version
+// Version URL string names (setup.dyzion.com/XXX) - replace XXX with these values to get the most recent version
 // Unfortunately these have to be defined globally so Player knows how to find the latest version of Studio to download
 #define VERSIONGUIDNAMESTUDIO       "versionQTStudio"
 #define VERSIONGUIDNAMERCC			"NOVERSION"
