@@ -726,7 +726,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 			if (fromInstall)
 				url = format_string(_T("%S%s"), BaseHost().c_str(), _T("/download/thankyou"));
 			else
-				url = format_string(_T("%S%s"), BaseHost().c_str(), _T("/Games.aspx"));
+				url = format_string(_T("%S%s"), BaseHost().c_str(), _T("/games"));
 
 
 			bool launcherStarted = false;
@@ -750,7 +750,10 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 					url = format_string(_T("http://%s"), url.c_str());
 				}
 				LOG_ENTRY1("Redirectings to page url=%S", url.c_str());
-				ShellExecute(0, _T("open"), url.c_str(), 0, 0, 1);
+				if (!fromInstall)
+				{
+					ShellExecute(0, _T("open"), url.c_str(), 0, 0, 1);
+				}
 			}
 
 			waitForApp = false;
