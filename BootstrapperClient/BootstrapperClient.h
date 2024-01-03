@@ -40,7 +40,7 @@ private:
 	//install steps of Bootstrapper client
 	void DeployBootstrapper();
 	void RegisterInstallHost();
-	void DeployRobloxProxys();
+	//void DeployRobloxProxys();
 	void InstallPlayer();
 
 	std::string BuildDateTime(int y, int m, int d);

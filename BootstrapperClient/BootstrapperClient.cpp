@@ -24,7 +24,7 @@
 #include "ClientProgressDialog.h"
 #include "RobloxServicesTools.h"
 
-static const TCHAR* BootstrapperFileName    = _T("RobloxPlayerLauncher.exe");
+static const TCHAR* BootstrapperFileName    = _T("DyzionPlayerLauncher.exe");
 static const TCHAR* RobloxAppFileName		= _T(PLAYEREXENAME);
 static const TCHAR* BootstrapperMutexName   = _T("www.dyzion.com/bootstrapper");
 static const TCHAR* StartRobloxAppMutex     = _T("www.dyzion.com/startRobloxApp");
@@ -976,7 +976,7 @@ void BootstrapperClient::deployStudioBetaBootstrapper(bool forceDesktopIconCreat
 
 void BootstrapperClient::deployRobloxProxy(bool commitData)
 {
-	deployer->deployVersionedFile(_T("RobloxProxy.zip"), NULL, Progress(), commitData);
+	/*deployer->deployVersionedFile(_T("RobloxProxy.zip"), NULL, Progress(), commitData);
 	CheckCancel();
 
 	if (!commitData)
@@ -1022,10 +1022,12 @@ void BootstrapperClient::deployRobloxProxy(bool commitData)
 		if (!FAILED(installKey.Open(isPerUser() ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, GetRegistryPath().c_str())))
 			installKey.SetStringValue(_T("Plug-in version"), convert_s2w(version).c_str());
 	}
+	*/
 }
 
 void BootstrapperClient::deployNPRobloxProxy(bool commitData)
 {
+	/*
 	deployer->deployVersionedFile(_T("NPRobloxProxy.zip"), NULL, Progress(), commitData);
 	CheckCancel();
 
@@ -1058,6 +1060,7 @@ void BootstrapperClient::registerFirefoxPlugin(const TCHAR* id, bool is64Bits)
 
 	CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s\\MimeTypes"), id).c_str(), NULL, is64Bits);
 	CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s\\MimeTypes\\application/x-vnd-Dyzion-launcher"), id).c_str(), NULL, is64Bits);
+	*/
 }
 
 void BootstrapperClient::unregisterFirefoxPlugin(const TCHAR* id, bool is64Bits)
@@ -1075,7 +1078,7 @@ void BootstrapperClient::unregisterFirefoxPlugin(const TCHAR* id, bool is64Bits)
 void BootstrapperClient::DeployComponents(bool isUpdating, bool commitData)
 {
 	std::vector<std::pair<std::wstring, std::wstring> > files;
-	createDirectory((programDirectory() + _T("content")).c_str());
+	/*createDirectory((programDirectory() + _T("content")).c_str());
 	createDirectory((programDirectory() + _T("content\\fonts")).c_str());
 	createDirectory((programDirectory() + _T("content\\music")).c_str());
 	createDirectory((programDirectory() + _T("content\\particles")).c_str());
@@ -1087,20 +1090,21 @@ void BootstrapperClient::DeployComponents(bool isUpdating, bool commitData)
 	createDirectory((programDirectory() + _T("PlatformContent\\pc\\textures")).c_str());
 	createDirectory((programDirectory() + _T("PlatformContent\\pc\\terrain")).c_str());
 	createDirectory((programDirectory() + _T("shaders")).c_str());
+	*/
 
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("redist.zip"), _T("")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("redist.zip"), _T("")));
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("RobloxApp.zip"), _T("")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("Libraries.zip"), _T("")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-fonts.zip"), _T("content\\fonts\\")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-music.zip"), _T("content\\music\\")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-particles.zip"), _T("content\\particles\\")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-sky.zip"), _T("content\\sky\\")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-sounds.zip"), _T("content\\sounds\\")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-textures.zip"), _T("content\\textures\\")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-textures2.zip"), _T("content\\textures\\")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-textures3.zip"), _T("PlatformContent\\pc\\textures\\")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("content-terrain.zip"), _T("PlatformContent\\pc\\terrain\\")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("shaders.zip"), _T("shaders\\")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("Libraries.zip"), _T("")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-fonts.zip"), _T("content\\fonts\\")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-music.zip"), _T("content\\music\\")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-particles.zip"), _T("content\\particles\\")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-sky.zip"), _T("content\\sky\\")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-sounds.zip"), _T("content\\sounds\\")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-textures.zip"), _T("content\\textures\\")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-textures2.zip"), _T("content\\textures\\")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-textures3.zip"), _T("PlatformContent\\pc\\textures\\")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-terrain.zip"), _T("PlatformContent\\pc\\terrain\\")));
+	//files.push_back(std::pair<std::wstring, std::wstring>(_T("shaders.zip"), _T("shaders\\")));
 
 	DoDeployComponents(files, isUpdating, commitData);
 }
