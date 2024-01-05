@@ -6,6 +6,6 @@
 
 std::string SettingsLoader::GetSettingsString(std::string groupName)
 {
-	std::string url = GetSettingsUrl(_baseUrl, groupName.c_str(), "76E5A40C-3AE1-4028-9F10-7C62520BD94F");
+	std::string url = GetSettingsUrl(_baseUrl, groupName.c_str(), "314B192B-D17A-4921-ABF9-C6F6264E5110");
 	return HttpTools::httpGetString(url);
 }

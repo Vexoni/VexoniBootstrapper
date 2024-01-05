@@ -14,6 +14,7 @@ private:
 		std::string authUrl;
 		std::string authTicket;
 		std::string script;
+		std::string clientVersion;
 		std::string guidName;
 		std::string hiddenStartEventName;
 		SharedLauncher::LaunchMode launchMode;

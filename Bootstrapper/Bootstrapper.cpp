@@ -1790,7 +1790,7 @@ void Bootstrapper::writeAppSettings()
 {
 	message("Configuring Dyzion...");
 
-	std::wstring appSettings(programDirectory() + _T("AppSettings.xml"));
+	std::wstring appSettings(programDirectory() + _T("2017L\\AppSettings.xml")); // another modification as this is in the 2017L folder which is the main client
 	std::ofstream file(appSettings.c_str());
 
 	file << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";

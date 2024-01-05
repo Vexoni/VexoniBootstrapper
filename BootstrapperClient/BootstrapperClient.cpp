@@ -584,6 +584,8 @@ bool BootstrapperClient::ProcessProtocolHandlerArgs(const std::map<std::wstring,
 		LOG_ENTRY("BootstrapperClient::ProcessProtocolHandlerArgs - option: play");
 
 		std::wstring placeLauncherUrl = getValue(argMap, _T("placelauncherurl"));
+		// client version custom added
+		std::wstring clientVersion = getValue(argMap, _T("clientversion"));
 		if (placeLauncherUrl.length() > 0)
 		{
 			TCHAR decodedUrl [1024]; 
@@ -593,6 +595,12 @@ bool BootstrapperClient::ProcessProtocolHandlerArgs(const std::map<std::wstring,
 
 			playArgs->script = convert_w2s(decodedUrl);
 			LOG_ENTRY1("BootstrapperClient::ProcessProtocolHandlerArgs = PlaceLauncherUrl, value = %s", playArgs->script.c_str());
+		}
+		// client version custom added
+		if (clientVersion.length() > 0)
+		{
+			playArgs->clientVersion = convert_w2s(clientVersion);
+			LOG_ENTRY1("BootstrapperClient::ProcessProtocolHandlerArgs = clientVersion, value = %s", playArgs->clientVersion.c_str());
 		}
 
 		playArgs->authUrl = "https://" + BaseHost() + "/Login/Negotiate.ashx";
@@ -787,6 +795,9 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 
 		std::string gameMode = "play";
         LOG_ENTRY("Starting in play configuration");
+		// this line for pathToCombine is a bit messy, clean up soon?
+		std::wstring newFolder = std::wstring("\\", "\\");
+		std::wstring launchPath = programDirectory() + newFolder + std::wstring(playArgs->clientVersion.begin(), playArgs->clientVersion.end()) + std::wstring(RobloxAppFileName);
 		std::wstring startArgs = format_string(_T("--%S -a %S -t %S -j %S"), gameMode.c_str(), playArgs->authUrl.c_str(), playArgs->authTicket.c_str(), playArgs->script.c_str());
 		if (!playArgs->hiddenStartEventName.empty())
 		{
@@ -799,7 +810,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 		LOG_ENTRY1("playArgs = %S", startArgs.c_str());
 
 		LOG_ENTRY("Starting windows player (beta)");
-		CreateProcess((programDirectory() + std::wstring(RobloxAppFileName)).c_str(), startArgs.c_str(), pi);
+		CreateProcess(launchPath.c_str(), startArgs.c_str(), pi);
 	}
 
 	// TODO: Allow cancel of start process???
@@ -1092,8 +1103,8 @@ void BootstrapperClient::DeployComponents(bool isUpdating, bool commitData)
 	*/
 
 	//files.push_back(std::pair<std::wstring, std::wstring>(_T("redist.zip"), _T("")));
-	files.push_back(std::pair<std::wstring, std::wstring>(_T("RobloxApp.zip"), _T("")));
 	//files.push_back(std::pair<std::wstring, std::wstring>(_T("Libraries.zip"), _T("")));
+	// files.push_back(std::pair<std::wstring, std::wstring>(_T("RobloxApp.zip"), _T("")));
 	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-fonts.zip"), _T("content\\fonts\\")));
 	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-music.zip"), _T("content\\music\\")));
 	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-particles.zip"), _T("content\\particles\\")));
@@ -1104,6 +1115,11 @@ void BootstrapperClient::DeployComponents(bool isUpdating, bool commitData)
 	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-textures3.zip"), _T("PlatformContent\\pc\\textures\\")));
 	//files.push_back(std::pair<std::wstring, std::wstring>(_T("content-terrain.zip"), _T("PlatformContent\\pc\\terrain\\")));
 	//files.push_back(std::pair<std::wstring, std::wstring>(_T("shaders.zip"), _T("shaders\\")));
+
+	// The code above is Roblox's original code from march 2016 to download the client, here is my code that replaces that with downloading 4 clients and putting them into their folders.
+
+	createDirectory((programDirectory() + _T("2017L")).c_str());
+	files.push_back(std::pair<std::wstring, std::wstring>(_T("RobloxApp.zip"), _T("2017L"))); // 2017L
 
 	DoDeployComponents(files, isUpdating, commitData);
 }
@@ -1128,15 +1144,6 @@ void BootstrapperClient::DoInstallApp()
 	CRegKey installKey = CreateKey(isPerUser() ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, GetRegistryPath().c_str(), (programDirectory() + BootstrapperFileName).c_str());
 	LOG_ENTRY("set install host key value");
 	throwHRESULT(installKey.SetStringValue(_T("install host"), convert_s2w(InstallHost()).c_str()), "Failed to set install host key value");
-	CheckCancel();
-	
-	// Now deploy RobloxProxy so that javascript clients can get going ASAP (has to go after studio bootstrappers in case we are in editMode)
-	LOG_ENTRY("deployRobloxProxy()");
-	deployRobloxProxy(true);
-	CheckCancel();
-
-	LOG_ENTRY("deployNPRobloxProxy()");
-	deployNPRobloxProxy(true);
 	CheckCancel();
 
 	setStage(3);
@@ -1269,7 +1276,7 @@ void BootstrapperClient::RegisterEvent(const TCHAR *eventName)
 void BootstrapperClient::initialize()
 {
 	LOG_ENTRY("BootstrapperClient::initialize");
-	counters.reset(new CountersClient(BaseHost(), "76E5A40C-3AE1-4028-9F10-7C62520BD94F", &logger));
+	counters.reset(new CountersClient(BaseHost(), "314B192B-D17A-4921-ABF9-C6F6264E5110", &logger));
 
 	{
 		proxyModule.appName = "RobloxProxy";
@@ -1278,8 +1285,8 @@ void BootstrapperClient::initialize()
 		proxyModule.typeLib = "{731B317A-E2B8-4BF7-A2C4-B47C225DDAFF}"; 
 		proxyModule.typeLibVersion = "1.0"; 
 		proxyModule.appID = AppID_Launcher;
-		proxyModule.interfaces.push_back(ComModule::Interface("ILauncher", "{699F0898-B7BC-4DE5-AFEE-0EC38AD42240}", false));
-		proxyModule.interfaces.push_back(ComModule::Interface("_ILauncherEvents", "{6E9600BE-5654-47F0-9A68-D6DC25FADC55}", true));
+		proxyModule.interfaces.push_back(ComModule::Interface("ILauncher", "{314B192B-D17A-4921-ABF9-C6F6264E5110}", false));
+		proxyModule.interfaces.push_back(ComModule::Interface("_ILauncherEvents", "{314B192B-D17A-4921-ABF9-C6F6264E5110}", true));
 		proxyModule.progID = "RobloxProxy.Launcher.4";
 		proxyModule.versionIndependentProgID = "RobloxProxy.Launcher";
 		proxyModule.name = _T("Launcher Class");
