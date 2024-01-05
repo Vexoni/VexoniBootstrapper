@@ -796,8 +796,9 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 		std::string gameMode = "play";
         LOG_ENTRY("Starting in play configuration");
 		// this line for pathToCombine is a bit messy, clean up soon?
-		std::wstring newFolder = std::wstring("\\", "\\");
-		std::wstring launchPath = programDirectory() + newFolder + std::wstring(playArgs->clientVersion.begin(), playArgs->clientVersion.end()) + std::wstring(RobloxAppFileName);
+		std::wstring newPath = L"\\";
+		std::wstring clientVersionPath = std::wstring(playArgs->clientVersion.begin(), playArgs->clientVersion.end());
+		std::wstring launchPath = programDirectory() + newPath + clientVersionPath + newPath + std::wstring(RobloxAppFileName);
 		std::wstring startArgs = format_string(_T("--%S -a %S -t %S -j %S"), gameMode.c_str(), playArgs->authUrl.c_str(), playArgs->authTicket.c_str(), playArgs->script.c_str());
 		if (!playArgs->hiddenStartEventName.empty())
 		{

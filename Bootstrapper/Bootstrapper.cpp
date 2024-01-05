@@ -1790,7 +1790,7 @@ void Bootstrapper::writeAppSettings()
 {
 	message("Configuring Dyzion...");
 
-	std::wstring appSettings(programDirectory() + _T("2017L\\AppSettings.xml")); // another modification as this is in the 2017L folder which is the main client
+	std::wstring appSettings(programDirectory() + _T("2017L\\AppSettings.xml")); // another modification as this is in the 20
 	std::ofstream file(appSettings.c_str());
 
 	file << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
@@ -2346,10 +2346,13 @@ void Bootstrapper::run()
 				// if the system is indicating we have roblox installed, try and find the exe
 				HANDLE robloxAppFile;
 				WIN32_FIND_DATA robloxAppFileData;
-				robloxAppFile = FindFirstFile((programDirectory() + GetRobloxAppFileName()).c_str(), &robloxAppFileData);
+				std::wstring pathCheckingFor = programDirectory() + L"2017L\\" + GetRobloxAppFileName().c_str();
+				// 2017L is always our default client if none is specified so check that
+				robloxAppFile = FindFirstFile(pathCheckingFor.c_str(), &robloxAppFileData);
 
 				LOG_ENTRY1("RobloxAppFileName = %S", GetRobloxAppFileName().c_str());
 				LOG_ENTRY1("programDirectory = %S", programDirectory().c_str());
+				LOG_ENTRY1("checkingDirectory = %S", pathCheckingFor.c_str());
 
 				// if RobloxApp.exe is not found in the indicated install folder, force uninstall/install
 				if ((robloxAppFile == INVALID_HANDLE_VALUE))
