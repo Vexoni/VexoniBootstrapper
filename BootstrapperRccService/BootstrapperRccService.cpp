@@ -29,7 +29,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 BootstrapperRccService::BootstrapperRccService(HINSTANCE hInstance)
 :Bootstrapper(hInstance)
 {
-	_regSubPath = _T("RobloxReg");
+	_regSubPath = _T("DyzionReg");
 	_regPath = _T("SOFTWARE\\") + _regSubPath;
 	_versionGuidName = _T(VERSIONGUIDNAMERCC);
 

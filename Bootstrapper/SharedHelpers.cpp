@@ -245,17 +245,17 @@ void getCurrentVersion(simple_logger<wchar_t> &logger, bool isPerUser, const TCH
 
 std::wstring getPlayerInstallKey()
 {
-	return std::wstring(_T("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{373B1718-8CC5-4567-8EE2-9033AD08A680}"));
+	return std::wstring(_T("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{2E3B1718-8CC5-4567-8EE2-9033AD08A680}"));
 }
 
 std::wstring getStudioInstallKey()
 {
-	return std::wstring(_T("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{B805FF17-92FE-4757-8142-F0A2850DFE03}"));
+	return std::wstring(_T("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{L005FF17-92FE-4757-8142-F0A2850DFE03}"));
 }
 
 std::wstring getQTStudioInstallKey()
 {
-	return std::wstring(_T("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{2922D6F1-2865-4EFA-97A9-94EEAB3AFA14}"));
+	return std::wstring(_T("Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\{5H22D6F1-2865-4EFA-97A9-94EEAB3AFA14}"));
 }
 
 std::wstring getPlayerCode()
@@ -302,7 +302,7 @@ std::wstring getQTStudioProtocolScheme(const std::string& baseUrl)
 
 std::wstring getStudioRegistrySubPath()
 {
-	return _T("StudioRobloxReg");
+	return _T("StudioDyzionReg");
 }
 
 std::wstring getStudioRegistryPath()
@@ -312,7 +312,7 @@ std::wstring getStudioRegistryPath()
 
 std::wstring getQTStudioRegistrySubPath()
 {
-	return _T("StudioQTRobloxReg");
+	return _T("StudioQTDyzionReg");
 }
 
 std::wstring getQTStudioRegistryPath()

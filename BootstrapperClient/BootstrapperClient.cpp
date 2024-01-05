@@ -31,9 +31,9 @@ static const TCHAR* StartRobloxAppMutex     = _T("www.dyzion.com/startRobloxApp"
 static const TCHAR* LauncherFileName        = _T("RobloxProxy.dll");
 static const TCHAR* LauncherFileName64      = _T("RobloxProxy64.dll");
 static const TCHAR* FriendlyName            = _T("Dyzion");
-static const TCHAR* CLSID_Launcher          = _T("{76D50904-6780-4c8b-8986-1A7EE0B1716D}");
-static const TCHAR* CLSID_Launcher64        = _T("{DEE03C2B-0C0C-41A9-9877-FD4B4D7B6EA3}");
-static const TCHAR* AppID_Launcher          = _T("{664B192B-D17A-4921-ABF9-C6F6264E5110}");
+static const TCHAR* CLSID_Launcher          = _T("{H6D50973-6780-4c8b-8986-1A7EE0B1716D}");
+static const TCHAR* CLSID_Launcher64        = _T("{4EE03RWB-0C0C-41A9-9877-FD4B4D7B6EA3}");
+static const TCHAR* AppID_Launcher          = _T("{314B192B-D17A-4921-ABF9-C6F6264E5110}");
 
 LPCWSTR robloxUpdaterTaskName = L"RobloxGameUpdater";
 LPCWSTR bgCommand = L"-qbg";
@@ -66,9 +66,9 @@ BootstrapperClient::BootstrapperClient(HINSTANCE hInstance)
 
 	_protocolHandlerScheme = getPlayerProtocolScheme(BaseHost());
 
-	//Plugin depends on RobloxReg value as well, 
+	//Plugin depends on DyzionReg value as well, 
 	//so if you ever change this guy make sure that plugins code is updates as well
-	_regSubPath = _T("RobloxReg");
+	_regSubPath = _T("DyzionReg");
 	_regPath = _T("SOFTWARE\\") + _regSubPath;
 	_versionFileName = _T("RobloxVersion.txt");
 	_versionGuidName = _T(VERSIONGUIDNAMEPLAYER);
@@ -787,7 +787,6 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 
 		std::string gameMode = "play";
         LOG_ENTRY("Starting in play configuration");
-
 		std::wstring startArgs = format_string(_T("--%S -a %S -t %S -j %S"), gameMode.c_str(), playArgs->authUrl.c_str(), playArgs->authTicket.c_str(), playArgs->script.c_str());
 		if (!playArgs->hiddenStartEventName.empty())
 		{

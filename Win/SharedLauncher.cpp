@@ -9,8 +9,8 @@
     #include "ProcessInformation.h"
 #endif
 
-#define DyzionREGKEY        "RobloxReg"	        // Can't use "Roblox" because it is used by the old legacy installer
-#define STUDIOQTDyzionREG   "StudioQTRobloxReg" // Technical debt we need to make this two names globally unique and shared
+#define DyzionREGKEY        "DyzionReg"	        // Can't use "Roblox" because it is used by the old legacy installer
+#define STUDIOQTDyzionREG   "StudioQTDyzionReg" // Technical debt we need to make this two names globally unique and shared
 
 //Pull in the win32 version Library
 #pragma comment(lib, "version.lib")
