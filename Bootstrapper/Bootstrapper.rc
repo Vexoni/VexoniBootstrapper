@@ -125,7 +125,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,6,3,2
+ FILEVERSION 1,6,3,3
  PRODUCTVERSION 1,6,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
@@ -143,7 +143,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Dyzion"
             VALUE "FileDescription", "Dyzion"
-            VALUE "FileVersion", "1, 6, 3, 2"
+            VALUE "FileVersion", "1, 6, 3, 3"
             VALUE "LegalCopyright", "(C) 2023 Dyzion Corporation.  All rights reserved."
             VALUE "OriginalFilename", "Dyzion.exe"
             VALUE "ProductName", "Dyzion Bootstrapper"
