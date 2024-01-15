@@ -1127,6 +1127,7 @@ void BootstrapperClient::DeployComponents(bool isUpdating, bool commitData)
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("RobloxApp.zip"), _T("2017L"))); // 2017L
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("RobloxApp2021E.zip"), _T("2021E"))); // 2021E
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("RobloxApp2019L.zip"), _T("2019L"))); // 2019L
+	files.push_back(std::pair<std::wstring, std::wstring>(_T("RobloxApp2015M.zip"), _T("2015M"))); // 2015M
 	DoDeployComponents(files, isUpdating, commitData);
 }
 
