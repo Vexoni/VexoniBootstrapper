@@ -23,6 +23,7 @@
 #include "StringConv.h"
 #include "ClientProgressDialog.h"
 #include "RobloxServicesTools.h"
+#include "TrustCheck.h"
 
 static const TCHAR* BootstrapperFileName    = _T("VexoniPlayerLauncher.exe");
 static const TCHAR* RobloxAppFileName		= _T(PLAYEREXENAME);
@@ -795,6 +796,12 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 
 		std::string gameMode = "play";
         LOG_ENTRY("Starting in play configuration");
+		// trust check
+		TrustCheck trustChecky;
+		if (!trustChecky.trustCheck(playArgs->clientVersion))
+		{
+			throw std::runtime_error("Trust check failed");
+		}
 		// this line for pathToCombine is a bit messy, clean up soon?
 		std::wstring newPath = L"\\";
 		std::wstring clientVersionPath = std::wstring(playArgs->clientVersion.begin(), playArgs->clientVersion.end());

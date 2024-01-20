@@ -36,6 +36,9 @@
     <ClCompile Include="..\ClientShared\SimpleJSON.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TrustCheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BootstrapperClient.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\ClientShared\SimpleJSON.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TrustCheck.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
