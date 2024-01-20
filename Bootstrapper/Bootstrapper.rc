@@ -125,7 +125,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,6,3,7
+ FILEVERSION 1,6,3,1
  PRODUCTVERSION 1,6,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
@@ -143,7 +143,7 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Vexoni"
             VALUE "FileDescription", "Vexoni"
-            VALUE "FileVersion", "1, 6, 3, 7"
+            VALUE "FileVersion", "1, 6, 3, 1"
             VALUE "LegalCopyright", "(C) 2023 Vexoni Corporation.  All rights reserved."
             VALUE "OriginalFilename", "Vexoni.exe"
             VALUE "ProductName", "Vexoni Bootstrapper"
@@ -166,7 +166,7 @@ IDB_BTN_OK              BITMAP                  "assets\\btn_ok.bmp"
 IDB_BTN_OK_ON           BITMAP                  "assets\\btn_ok-ON.bmp"
 IDB_BTN_CANCEL          BITMAP                  "assets\\btn_cancel.bmp"
 IDB_BTN_CANCEL_ON       BITMAP                  "assets\\btn_cancel-ON.bmp"
-IDB_LOGO                BITMAP                  "assets\\logo_dyzion@1x.bmp"
+IDB_LOGO                BITMAP                  "assets\\logo_vexoni@1x.bmp"
 IDB_STUDIO_LOGO         BITMAP                  "assets\\logo_robloxstudio@1x.bmp"
 IDB_BTN_LAUNCH_STUDIO   BITMAP                  "assets\\btn_launchstudio.bmp"
 IDB_BTN_LAUNCH_STUDIO_ON BITMAP                  "assets\\btn_launchstudio-ON.bmp"
