@@ -29,7 +29,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 BootstrapperRccService::BootstrapperRccService(HINSTANCE hInstance)
 :Bootstrapper(hInstance)
 {
-	_regSubPath = _T("DyzionReg");
+	_regSubPath = _T("VexoniReg");
 	_regPath = _T("SOFTWARE\\") + _regSubPath;
 	_versionGuidName = _T(VERSIONGUIDNAMERCC);
 
@@ -115,15 +115,15 @@ void BootstrapperRccService::installService()
 		throw std::runtime_error("RCCService.exe -stop -uninstall timed out");
 	
 	// Write the installation dir to the registry
-	const TCHAR rbxRegPath[] = _T("Software\\Dyzion Corporation\\Roblox");
+	const TCHAR rbxRegPath[] = _T("Software\\Vexoni Corporation\\Roblox");
 	CRegKey pathKey;
 	pathKey.Create(HKEY_LOCAL_MACHINE, rbxRegPath);
 	if (pathKey.m_hKey == NULL)
-		throw std::runtime_error("Unable to create/open reg key: 'Software\\Dyzion Corporation\\Roblox'");
+		throw std::runtime_error("Unable to create/open reg key: 'Software\\Vexoni Corporation\\Roblox'");
 
 	LONG res = pathKey.SetStringValue(_T("RccServicePath"), (LPCTSTR)ProgramDirectory().c_str());
 	if (res != ERROR_SUCCESS)
-		throw std::runtime_error("Failed writing to registry: 'Software\\Dyzion Corporation\\Roblox\\RccServicePath'");
+		throw std::runtime_error("Failed writing to registry: 'Software\\Vexoni Corporation\\Roblox\\RccServicePath'");
 }
 void BootstrapperRccService::uninstallService()
 {

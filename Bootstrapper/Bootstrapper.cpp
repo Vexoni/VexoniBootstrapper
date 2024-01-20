@@ -180,7 +180,7 @@ public:
 				else
 				{
 					CString message;
-					message.Format(_T("An error occured and Dyzion cannot continue.\n\n%S"), e.what());
+					message.Format(_T("An error occured and Vexoni cannot continue.\n\n%S"), e.what());
 					::MessageBox(NULL, message, _T("Error"), MB_OK | MB_ICONEXCLAMATION);
 				}
 				result = -1;
@@ -1188,8 +1188,8 @@ void Bootstrapper::RegisterUninstall(const TCHAR *productName)
 
 	std::wstring uninstallString = format_string(_T("\"%s%s\" -uninstall%s"), programDirectory().c_str(), GetBootstrapperFileName().c_str(), perUser ? _T("") : _T(" -alluser"));
 	throwHRESULT (keyProductCode.SetStringValue(_T("UninstallString"), uninstallString.c_str(), REG_EXPAND_SZ), "Failed to set UninstallString key");
-	throwHRESULT (keyProductCode.SetStringValue(_T("Publisher"), _T("Dyzion Corporation")), "Failed to set Publisher key");
-	throwHRESULT (keyProductCode.SetStringValue(_T("URLInfoAbout"), _T("http://www.dyzion.com")), "Failed to set URLInfoAbout key");
+	throwHRESULT (keyProductCode.SetStringValue(_T("Publisher"), _T("Vexoni Corporation")), "Failed to set Publisher key");
+	throwHRESULT (keyProductCode.SetStringValue(_T("URLInfoAbout"), _T("http://www.vexoni.com")), "Failed to set URLInfoAbout key");
 	throwHRESULT (keyProductCode.SetStringValue(_T("Comments"), convert_s2w(installVersion).c_str()), "Failed to set Comments key");
 	throwHRESULT (keyProductCode.SetStringValue(_T("InstallLocation"), programDirectory().c_str()), "Failed to set InstallLocation key");
 	throwHRESULT (keyProductCode.SetDWORDValue(_T("NoModify"), 1), "Failed to set NoModify key");
@@ -1235,7 +1235,7 @@ void Bootstrapper::RegisterProtocolHandler(const std::wstring& protocolScheme, c
 
 	// register the protocol handler scheme
 	CRegKey key = CreateKey(isPerUser() ? HKEY_CURRENT_USER : HKEY_LOCAL_MACHINE, (_T("SOFTWARE\\Classes\\") + protocolScheme).c_str());
-	throwHRESULT(key.SetStringValue(_T(""), _T("URL: Dyzion Protocol")), format_string("failed to set value for protocol"));
+	throwHRESULT(key.SetStringValue(_T(""), _T("URL: Vexoni Protocol")), format_string("failed to set value for protocol"));
 	throwHRESULT(key.SetStringValue(_T("URL Protocol"), _T("")), format_string("failed to set value for protocol"));
 
 	CreateKey(key, _T("DefaultIcon"), exePath.c_str());
@@ -1660,7 +1660,7 @@ bool Bootstrapper::checkBootstrapperVersion()
 	moduleVersionNumber = vi.GetFileVersionAsString();
 	LOG_ENTRY1("module file version: %s", moduleVersionNumber.c_str());
 
-	message("Connecting to Dyzion...");
+	message("Connecting to Vexoni...");
 	try
 	{
 		installVersion = fetchVersionGuid(); // TODO: Why is this setting the installVersion?
@@ -1742,7 +1742,7 @@ bool Bootstrapper::checkBootstrapperVersion()
 
 			try
 			{
-				message("Getting the latest Dyzion...");
+				message("Getting the latest Vexoni...");
 
 				// We could use an "exe" extension, but hiding the type isn't a bad idea?
 				newBootstrapper = simple_logger<wchar_t>::get_temp_filename(_T("tmp"));
@@ -1788,7 +1788,7 @@ bool Bootstrapper::checkBootstrapperVersion()
 
 void Bootstrapper::writeAppSettings()
 {
-	message("Configuring Dyzion...");
+	message("Configuring Vexoni...");
 
 	std::wstring appSettings(programDirectory() + _T("2017L\\AppSettings.xml")); // another modification as this is in the 20
 	std::ofstream file(appSettings.c_str());
@@ -3149,7 +3149,7 @@ void Bootstrapper::setLatestProcess()
 {
 	int pid = _getpid();
 
-	const std::string latestProcessName = format_string("www.dyzion.com/%s/%s/latestProcess", installHost.c_str(), Type().c_str());
+	const std::string latestProcessName = format_string("www.vexoni.com/%s/%s/latestProcess", installHost.c_str(), Type().c_str());
 
 	latestProcess.Attach(CreateFileMapping(
 			 INVALID_HANDLE_VALUE,    // use paging file

@@ -9,8 +9,8 @@
     #include "ProcessInformation.h"
 #endif
 
-#define DyzionREGKEY        "DyzionReg"	        // Can't use "Roblox" because it is used by the old legacy installer
-#define STUDIOQTDyzionREG   "StudioQTDyzionReg" // Technical debt we need to make this two names globally unique and shared
+#define VexoniREGKEY        "VexoniReg"	        // Can't use "Roblox" because it is used by the old legacy installer
+#define STUDIOQTVexoniREG   "StudioQTVexoniReg" // Technical debt we need to make this two names globally unique and shared
 
 //Pull in the win32 version Library
 #pragma comment(lib, "version.lib")
@@ -39,14 +39,14 @@ CRegKey GetKey(CString& out_operation, bool isStudioKey, bool is64bits)
 		// First check HKCU then try HKLM
 		if ( isStudioKey ) 
 		{
-            out_operation = _T("Open HKEY_CURRENT_USER\\Software\\") _T(STUDIOQTDyzionREG) _T(" key");
-			if ( SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\") _T(STUDIOQTDyzionREG), regSam)) && key.m_hKey )
+            out_operation = _T("Open HKEY_CURRENT_USER\\Software\\") _T(STUDIOQTVexoniREG) _T(" key");
+			if ( SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\") _T(STUDIOQTVexoniREG), regSam)) && key.m_hKey )
 			    return key;
 		}
 		else
 		{
-            out_operation = _T("Open HKEY_CURRENT_USER\\Software\\") _T(DyzionREGKEY) _T(" key");
-            if ( SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\") _T(DyzionREGKEY), regSam)) && key.m_hKey )
+            out_operation = _T("Open HKEY_CURRENT_USER\\Software\\") _T(VexoniREGKEY) _T(" key");
+            if ( SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\") _T(VexoniREGKEY), regSam)) && key.m_hKey )
 			    return key;
 		}
 	}
@@ -54,13 +54,13 @@ CRegKey GetKey(CString& out_operation, bool isStudioKey, bool is64bits)
 	// fallback to HKLM (used by "WinXP SP1" and "UAC off")
 	if ( isStudioKey ) 
 	{
-		out_operation = _T("Open HKEY_LOCAL_MACHINE\\Software\\") _T(STUDIOQTDyzionREG) _T(" key");
-		CheckResult(key.Open(HKEY_LOCAL_MACHINE, _T("Software\\") _T(STUDIOQTDyzionREG), regSam));
+		out_operation = _T("Open HKEY_LOCAL_MACHINE\\Software\\") _T(STUDIOQTVexoniREG) _T(" key");
+		CheckResult(key.Open(HKEY_LOCAL_MACHINE, _T("Software\\") _T(STUDIOQTVexoniREG), regSam));
 	}
 	else
 	{
-		out_operation = _T("Open HKEY_LOCAL_MACHINE\\Software\\") _T(DyzionREGKEY) _T(" key");
-		CheckResult(key.Open(HKEY_LOCAL_MACHINE, _T("Software\\") _T(DyzionREGKEY), regSam));
+		out_operation = _T("Open HKEY_LOCAL_MACHINE\\Software\\") _T(VexoniREGKEY) _T(" key");
+		CheckResult(key.Open(HKEY_LOCAL_MACHINE, _T("Software\\") _T(VexoniREGKEY), regSam));
 	}
 
     if ( !key.m_hKey )
@@ -352,7 +352,7 @@ CRegKey GetKey(CString& out_operation, bool isStudioKey, bool is64bits)
 	try
 	{
 		CRegKey key = GetKey(operation, false);
-		operation = _T("Query Software\\") _T(DyzionREGKEY) _T(" key");
+		operation = _T("Query Software\\") _T(VexoniREGKEY) _T(" key");
 		DWORD length = 256;
 		CString host;
 		CheckResult(key.QueryStringValue(_T("install host"), host.GetBuffer(length), &length));
@@ -382,7 +382,7 @@ CRegKey GetKey(CString& out_operation, bool isStudioKey, bool is64bits)
 		try
 		{
 			CRegKey key = GetKey(operation, false);
-			operation = _T("Query Software\\") _T(DyzionREGKEY) _T(" key");
+			operation = _T("Query Software\\") _T(VexoniREGKEY) _T(" key");
 			DWORD length = 256;
 			CString host;
 			CheckResult(key.QueryStringValue(_T("Plug-in version"), host.GetBuffer(length), &length));

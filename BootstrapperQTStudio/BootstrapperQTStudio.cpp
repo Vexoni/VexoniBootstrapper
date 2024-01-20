@@ -15,7 +15,7 @@ static const TCHAR* BootstrapperQTStudioFileName    = _T(STUDIOBOOTSTAPPERNAMEBE
 static const TCHAR* RobloxStudioAppFileName         = _T(STUDIOQTEXENAME);
 static const TCHAR* BootstrapperMutexName           = _T("www.roblox.com/bootstrapperQTStudio");
 static const TCHAR* StartRobloxStudioAppMutex       = _T("www.roblox.com/startRobloxQTStudioApp");
-static const TCHAR* FriendlyName                    = _T("Dyzion Studio");
+static const TCHAR* FriendlyName                    = _T("Vexoni Studio");
 static const TCHAR* StartEvent                      = _T("www.roblox.com/robloxQTStudioStartedEvent");
 
 static Bootstrapper* newBootstrapper(HINSTANCE hInstance)

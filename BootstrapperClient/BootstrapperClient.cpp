@@ -24,13 +24,13 @@
 #include "ClientProgressDialog.h"
 #include "RobloxServicesTools.h"
 
-static const TCHAR* BootstrapperFileName    = _T("DyzionPlayerLauncher.exe");
+static const TCHAR* BootstrapperFileName    = _T("VexoniPlayerLauncher.exe");
 static const TCHAR* RobloxAppFileName		= _T(PLAYEREXENAME);
-static const TCHAR* BootstrapperMutexName   = _T("www.dyzion.com/bootstrapper");
-static const TCHAR* StartRobloxAppMutex     = _T("www.dyzion.com/startRobloxApp");
+static const TCHAR* BootstrapperMutexName   = _T("www.vexoni.com/bootstrapper");
+static const TCHAR* StartRobloxAppMutex     = _T("www.vexoni.com/startRobloxApp");
 static const TCHAR* LauncherFileName        = _T("RobloxProxy.dll");
 static const TCHAR* LauncherFileName64      = _T("RobloxProxy64.dll");
-static const TCHAR* FriendlyName            = _T("Dyzion");
+static const TCHAR* FriendlyName            = _T("Vexoni");
 static const TCHAR* CLSID_Launcher          = _T("{H6D50973-6780-4c8b-8986-1A7EE0B1716D}");
 static const TCHAR* CLSID_Launcher64        = _T("{4EE03RWB-0C0C-41A9-9877-FD4B4D7B6EA3}");
 static const TCHAR* AppID_Launcher          = _T("{314B192B-D17A-4921-ABF9-C6F6264E5110}");
@@ -66,9 +66,9 @@ BootstrapperClient::BootstrapperClient(HINSTANCE hInstance)
 
 	_protocolHandlerScheme = getPlayerProtocolScheme(BaseHost());
 
-	//Plugin depends on DyzionReg value as well, 
+	//Plugin depends on VexoniReg value as well, 
 	//so if you ever change this guy make sure that plugins code is updates as well
-	_regSubPath = _T("DyzionReg");
+	_regSubPath = _T("VexoniReg");
 	_regPath = _T("SOFTWARE\\") + _regSubPath;
 	_versionFileName = _T("RobloxVersion.txt");
 	_versionGuidName = _T(VERSIONGUIDNAMEPLAYER);
@@ -236,7 +236,7 @@ HRESULT BootstrapperClient::SheduleTaskWinVista()
 	GetUserName(name, &bufSize);
 
 	regInfo->put_Author(name);
-	regInfo->put_Description(L"This tasks helps Dyzion game be updated.");
+	regInfo->put_Description(L"This tasks helps Vexoni game be updated.");
 
 	CComPtr<ITriggerCollection> triggerCollection;
 	hr = task->get_Triggers(&triggerCollection);
@@ -487,7 +487,7 @@ bool BootstrapperClient::NeedPreDeployRun()
 	}
 
 	CRegKey key;
-	if (SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\Dyzion Corporation\\Dyzion"), KEY_READ)))
+	if (SUCCEEDED(key.Open(HKEY_CURRENT_USER, _T("Software\\Vexoni Corporation\\Vexoni"), KEY_READ)))
 	{
 		TCHAR buf[MAX_PATH];
 		ULONG bufSize = MAX_PATH;
@@ -539,7 +539,7 @@ void BootstrapperClient::RunPreDeploy()
 		DeployComponents(true, false);
 
 		CRegKey key;
-		if (SUCCEEDED(key.Create(HKEY_CURRENT_USER, _T("Software\\Dyzion Corporation\\Dyzion"))))
+		if (SUCCEEDED(key.Create(HKEY_CURRENT_USER, _T("Software\\Vexoni Corporation\\Vexoni"))))
 		{
 			key.SetStringValue(_T("LastPreVersion"), convert_s2w(preVersion).c_str());
 			LOG_ENTRY("Setting last pre deploy version entry");
@@ -699,7 +699,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 	CTimedMutexLock lock(mutex);
 	while (lock.Lock(1) == WAIT_TIMEOUT )
 	{
-		LOG_ENTRY("Another process is starting Dyzion. Abandoning startRobloxApp");
+		LOG_ENTRY("Another process is starting Vexoni. Abandoning startRobloxApp");
 		return;
 	}
 
@@ -707,10 +707,10 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 
 	setStage(10);
 
-	message("Starting Dyzion...");
+	message("Starting Vexoni...");
 
 	LOG_ENTRY("Creating event");
-	CEvent robloxStartedEvent(NULL, TRUE, FALSE, _T("www.dyzion.com/robloxStartedEvent"));
+	CEvent robloxStartedEvent(NULL, TRUE, FALSE, _T("www.vexoni.com/robloxStartedEvent"));
 	LOG_ENTRY("Resetting event");
 	robloxStartedEvent.Reset();
 
@@ -817,7 +817,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 	// TODO: Allow cancel of start process???
 	Dialog()->ShowCancelButton(CMainDialog::CancelHide);
 
-	// wait for Dyzion to start
+	// wait for Vexoni to start
 	// This event is set in MainFrm.cpp
 	if (waitForApp) 
 	{
@@ -1020,7 +1020,7 @@ void BootstrapperClient::deployRobloxProxy(bool commitData)
 
 		// For IE8:
 		CRegKey allowedDomainsKey = CreateKey(key, _T("AllowedDomains"));
-		CreateKey(allowedDomainsKey, _T("dyzion.com"));
+		CreateKey(allowedDomainsKey, _T("vexoni.com"));
 		CreateKey(allowedDomainsKey, _T("robloxlabs.com"));
 	}
 
@@ -1060,8 +1060,8 @@ void BootstrapperClient::registerFirefoxPlugin(const TCHAR* id, bool is64Bits)
 	CRegKey key = CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s"), id).c_str(), NULL, is64Bits);
 
 	key.SetStringValue(_T("ProductName"), _T("Launcher"));
-	key.SetStringValue(_T("Description"), _T("Dyzion Launcher"));
-	key.SetStringValue(_T("Vendor"), _T("Dyzion"));
+	key.SetStringValue(_T("Description"), _T("Vexoni Launcher"));
+	key.SetStringValue(_T("Vendor"), _T("Vexoni"));
 	key.SetStringValue(_T("Version"), _T("1"));
 
 	if (is64Bits)
@@ -1070,7 +1070,7 @@ void BootstrapperClient::registerFirefoxPlugin(const TCHAR* id, bool is64Bits)
 		key.SetStringValue(_T("Path"), (programDirectory() + _T("\\NPRobloxProxy.dll")).c_str());
 
 	CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s\\MimeTypes"), id).c_str(), NULL, is64Bits);
-	CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s\\MimeTypes\\application/x-vnd-Dyzion-launcher"), id).c_str(), NULL, is64Bits);
+	CreateKey(parent, format_string(_T("SOFTWARE\\MozillaPlugins\\%s\\MimeTypes\\application/x-vnd-Vexoni-launcher"), id).c_str(), NULL, is64Bits);
 	*/
 }
 
@@ -1245,7 +1245,7 @@ void BootstrapperClient::DoUninstallApp(CRegKey &hk)
 	LOG_ENTRY("BootstrapperClient::DoUninstallApp - UnregisterProtocolHandler");
 	UnregisterProtocolHandler(GetProtocolHandlerUrlScheme());
 
-	LOG_ENTRY("Deleting Dyzion auto updater");
+	LOG_ENTRY("Deleting Vexoni auto updater");
 	UninstallRobloxUpdater();
 
 	LOG_ENTRY("BootstrapperClient::DoUninstallApp - deleteCurVersionKeys");

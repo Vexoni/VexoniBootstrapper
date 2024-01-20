@@ -11,7 +11,7 @@ std::wstring FileSystem::getSpecialFolder(FolderType folder, bool create, const 
 	std::string robloxDir = "";
 	if (appendRoblox)
 	{
-		robloxDir = "\\Dyzion";
+		robloxDir = "\\Vexoni";
 	}
 		
 	switch (folder)

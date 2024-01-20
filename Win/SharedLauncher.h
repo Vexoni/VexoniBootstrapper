@@ -1,6 +1,6 @@
 /**
  * SharedLauncher.h
- * Copyright (c) 2013 Dyzion Corp. All Rights Reserved.
+ * Copyright (c) 2013 Vexoni Corp. All Rights Reserved.
  */
 
 #pragma once

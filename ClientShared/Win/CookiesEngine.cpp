@@ -4,7 +4,7 @@
 #include "AtlBase.h"
 #include "AtlSync.h"
 
-const TCHAR rbxRegPath[] = _T("Software\\Dyzion Corporation\\Roblox");
+const TCHAR rbxRegPath[] = _T("Software\\Vexoni Corporation\\Roblox");
 const TCHAR rbxRegName[] = _T("CPath");
 const TCHAR CookieFileMutext[] = _T("RobloxCookieEngineMutex");
 

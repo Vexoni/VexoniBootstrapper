@@ -25,7 +25,7 @@ xcopy /Y /S ..\UploadBits\Win32-%~4-BootstrapperClient\* ..\UploadBits\Win32-%~4
 xcopy /Y /S ..\UploadBits\Win32-%~4-BootstrapperQTStudio\* ..\UploadBits\Win32-%~4%~1-BootstrapperQTStudio\ 
 xcopy /Y /S ..\UploadBits\Win32-%~4-BootstrapperRccService\* ..\UploadBits\Win32-%~4%~1-BootstrapperRccService\
 
-Resources\rtc.exe /plhd01="%~2" /plhd02="%~3" /plhd03="..\UploadBits\Win32-%~4%~1-BootstrapperClient\DyzionPlayerLauncher.exe" /plhd04="..\UploadBits\Win32-%~4%~1-BootstrapperClient\DyzionPlayerLauncher.exe" /F:"Resources\updateBootstrapperRC.rts"
+Resources\rtc.exe /plhd01="%~2" /plhd02="%~3" /plhd03="..\UploadBits\Win32-%~4%~1-BootstrapperClient\VexoniPlayerLauncher.exe" /plhd04="..\UploadBits\Win32-%~4%~1-BootstrapperClient\VexoniPlayerLauncher.exe" /F:"Resources\updateBootstrapperRC.rts"
 Resources\rtc.exe /plhd01="%~2" /plhd02="%~3" /plhd03="..\UploadBits\Win32-%~4%~1-BootstrapperQTStudio\RobloxStudioLauncherBeta.exe" /plhd04="..\UploadBits\Win32-%~4%~1-BootstrapperQTStudio\RobloxStudioLauncherBeta.exe" /F:"Resources\updateBootstrapperRC.rts"
 Resources\rtc.exe /plhd01="%~2" /plhd02="%~3" /plhd03="..\UploadBits\Win32-%~4%~1-BootstrapperRccService\Roblox.exe" /plhd04="..\UploadBits\Win32-%~4%~1-BootstrapperRccService\Roblox.exe" /F:"Resources\updateBootstrapperRC.rts"
 
