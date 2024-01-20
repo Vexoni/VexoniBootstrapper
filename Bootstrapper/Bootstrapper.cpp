@@ -1759,7 +1759,7 @@ bool Bootstrapper::checkBootstrapperVersion()
 				{
 					std::ofstream bootstrapperFile(newBootstrapper.c_str(), std::ios::binary);
 					// this we might need during rollback, lets be on safe side
-					HttpTools::httpGetCdn(this, installHost, format_string("/%s-Roblox.exe", installVersion.c_str()), std::string(), bootstrapperFile, false, boost::bind(&Bootstrapper::dummyProgress, _1, _2));
+					HttpTools::httpGetCdn(this, installHost, format_string("/%s-Vexoni.exe", installVersion.c_str()), std::string(), bootstrapperFile, false, boost::bind(&Bootstrapper::dummyProgress, _1, _2));
 				}
 			}
 

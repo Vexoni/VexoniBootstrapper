@@ -38,7 +38,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <UseOfAtl>Static</UseOfAtl>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -79,6 +79,7 @@
     <IntDir>obj\$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
+    <LibraryPath>$(CONTRIB_PATH)\boost_1_56_0\lib\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
@@ -90,7 +91,7 @@
     <OutDir>bin\$(Configuration)\</OutDir>
     <IntDir>obj\$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(CONTRIB_PATH)\boost_1_56_0\stage\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(CONTRIB_PATH)\boost_1_56_0\lib\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
@@ -108,13 +109,13 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;BOOST_THREAD_BUILD_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(CONTRIB_PATH)\SDK\Lib\Iphlpapi.lib;$(CONTRIB_PATH)\SDK\Lib\taskschd.lib;$(CONTRIB_PATH)\SDK\Lib\mstask.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(CONTRIB_PATH)\SDK\Lib\Iphlpapi.lib;$(CONTRIB_PATH)\SDK\Lib\taskschd.lib;$(CONTRIB_PATH)\SDK\Lib\mstask.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-gd-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-sgd-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-s-1_56.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)RobloxPlayerLauncher.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -172,8 +173,8 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(CONTRIB_PATH)\SDK\Lib\Iphlpapi.lib;$(CONTRIB_PATH)\SDK\Lib\taskschd.lib;$(CONTRIB_PATH)\SDK\Lib\mstask.lib;$(CONTRIB_PATH)\boost_1_56_0\stage\lib\libboost_thread-vc110-mt-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\stage\lib\libboost_thread-vc110-mt-gd-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\stage\lib\libboost_thread-vc110-mt-sgd-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\stage\lib\libboost_thread-vc110-mt-s-1_56.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)DyzionPlayerLauncher.exe</OutputFile>
+      <AdditionalDependencies>$(CONTRIB_PATH)\SDK\Lib\Iphlpapi.lib;$(CONTRIB_PATH)\SDK\Lib\taskschd.lib;$(CONTRIB_PATH)\SDK\Lib\mstask.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-gd-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-sgd-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-s-1_56.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)VexoniPlayerLauncher.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>

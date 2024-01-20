@@ -182,11 +182,11 @@ IDB_CLIENT_TEXT         BITMAP                  "assets\\txt_success-player@1x.b
 
 STRINGTABLE 
 BEGIN
-    IDS_INSTALLHOST         "setup.dyzion.com"
-    IDS_BASEHOST            "www.dyzion.com"
-    IDS_SUCCESS1            "DYZION IS SUCCESSFULLY INSTALLED!"
+    IDS_INSTALLHOST         "setup.vexoni.com"
+    IDS_BASEHOST            "www.vexoni.com"
+    IDS_SUCCESS1            "VEXONI IS SUCCESSFULLY INSTALLED!"
     IDS_SUCCESS2            "Just click the ""Play"" button on any game to join the action!"
-    IDS_STUDIO_SUCCESS1     "DYZION STUDIO IS SUCCESSFULLY INSTALLED!"
+    IDS_STUDIO_SUCCESS1     "VEXONI STUDIO IS SUCCESSFULLY INSTALLED!"
     IDS_STUDIO_SUCCESS2     "Click ""Launch Studio"" to make your new game!"
 END
 
