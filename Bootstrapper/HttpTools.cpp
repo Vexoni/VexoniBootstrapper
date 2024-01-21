@@ -6,8 +6,9 @@
 #include <boost/bind.hpp>
 #include "wininet.h"
 #include <strstream>
+#include <boost/version.hpp>
 #pragma comment (lib, "Wininet.lib")
-
+#include <boost/asio.hpp>
 #include <boost/foreach.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
@@ -475,8 +476,8 @@ namespace HttpTools
 		if (httpBoostPostTimeout > 0 && !std::strcmp(method, "POST"))
 		{
 			DWORD timeout = httpBoostPostTimeout * 1000;
-			setsockopt(socket.native(), SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof(timeout));
-			setsockopt(socket.native(), SOL_SOCKET, SO_SNDTIMEO, (const char*)&timeout, sizeof(timeout));
+			//setsockopt(socket.native(), SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof(timeout));
+			//setsockopt(socket.native(), SOL_SOCKET, SO_SNDTIMEO, (const char*)&timeout, sizeof(timeout));
 		}
 
 		// Try each endpoint until we successfully establish a connection.

@@ -50,14 +50,11 @@ MODIFICATIONS:
 
 
 #include "stdafx.h"
-
-
-
-
 #include <assert.h>
 #include <string>
 #include <comdef.h>
 #include <taskschd.h>
+#include <stdexcept>
 
 
 bool IsVistaPlus()

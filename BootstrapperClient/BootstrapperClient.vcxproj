@@ -31,7 +31,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <UseOfAtl>Static</UseOfAtl>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -91,7 +91,7 @@
     <OutDir>bin\$(Configuration)\</OutDir>
     <IntDir>obj\$(Configuration)\</IntDir>
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>$(CONTRIB_PATH)\boost_1_56_0\lib\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(CONTRIB_PATH)\boost_1_84_0\lib\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(Platform)\$(Configuration)\</OutDir>
@@ -164,16 +164,17 @@
       <Optimization>MinSpace</Optimization>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Size</FavorSizeOrSpeed>
-      <AdditionalIncludeDirectories>..\Bootstrapper;$(CONTRIB_PATH)\boost_1_56_0\include;$(CONTRIB_PATH)\boost_1_56_0\src;..\Win;..\ClientShared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Bootstrapper;$(CONTRIB_PATH)\boost_1_84_0\include;$(CONTRIB_PATH)\boost_1_84_0\src;..\Win;..\ClientShared;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;BOOST_THREAD_BUILD_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>$(CONTRIB_PATH)\SDK\Lib\Iphlpapi.lib;$(CONTRIB_PATH)\SDK\Lib\taskschd.lib;$(CONTRIB_PATH)\SDK\Lib\mstask.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-gd-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-sgd-1_56.lib;$(CONTRIB_PATH)\boost_1_56_0\lib\libboost_thread-vc110-mt-s-1_56.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(CONTRIB_PATH)\SDK\Lib\Iphlpapi.lib;$(CONTRIB_PATH)\SDK\Lib\taskschd.lib;$(CONTRIB_PATH)\SDK\Lib\mstask.lib;$(CONTRIB_PATH)\boost_1_84_0\lib\libboost_thread-vc143-mt-x32-1_84.lib;$(CONTRIB_PATH)\boost_1_84_0\lib\libboost_thread-vc143-mt-gd-x32-1_84.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)VexoniPlayerLauncher.exe</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>

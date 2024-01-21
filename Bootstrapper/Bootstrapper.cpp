@@ -1,7 +1,8 @@
 // Bootstrapper.cpp : Defines the entry point for the application.
 //
 
-#include "StdAfx.h"
+#include <sstream>
+#include "stdafx.h"
 #include "Bootstrapper.h"
 
 #include <windows.h>
@@ -451,9 +452,9 @@ void Bootstrapper::ReportElapsedEvent(bool startingGameClient)
 	RegisterEvent(eventName.c_str());
 }
 
+
 void Bootstrapper::reportDurationAndSizeEvent(const char* category, const char* result, DWORD duration, DWORD size) {
 	try {
-
 		// TODO: Remove calls to JoinRate.ashx
 		std::string handlerUrlPart = format_string(
 			"/Game/JoinRate.ashx?c=%s&r=%s&d=%ld&platform=Win32",
@@ -462,27 +463,26 @@ void Bootstrapper::reportDurationAndSizeEvent(const char* category, const char* 
 			handlerUrlPart += format_string("&b=%ld", size);
 		}
 
-		std::ostrstream result;
+		// Using std::ostringstream instead of std::ostrstream for VS22 port (Aep)
+		std::ostringstream resultStream;
 		HttpTools::httpGet(this, baseHost, handlerUrlPart, std::string(),
-			result, false, boost::bind(&Bootstrapper::dummyProgress, _1, _2));
-		////////////////////////////////
-
+			resultStream, false, boost::bind(&Bootstrapper::dummyProgress, _1, _2));
+		//////////////////////////////////
 
 		// new stats reporting api
-		char* apiPathFormatStr = "/game/report-stats?name=%s&value=%ld";
-		
+		const char* apiPathFormatStr = "/game/report-stats?name=%s&value=%ld";
+
 		std::string durationName = format_string("%s%s_Duration", category, result);
 		HttpTools::httpPost(this, baseHost, format_string(apiPathFormatStr, durationName.c_str(), duration), std::stringstream(""), "*/*",
-			result, false, boost::bind(&Bootstrapper::dummyProgress, _1, _2));
+			resultStream, false, boost::bind(&Bootstrapper::dummyProgress, _1, _2));
 
-		if (size > 0)
-		{
+		if (size > 0) {
 			std::string sizeName = format_string("%s%s_Size", category, result);
 			HttpTools::httpPost(this, baseHost, format_string(apiPathFormatStr, sizeName.c_str(), size), std::stringstream(""), "*/*",
-				result, false, boost::bind(&Bootstrapper::dummyProgress, _1, _2));
+				resultStream, false, boost::bind(&Bootstrapper::dummyProgress, _1, _2));
 		}
-
-	} catch (const std::exception& e) {
+	}
+	catch (const std::exception& e) {
 		LOG_ENTRY1("Error in reporting: %s", e.what());
 	}
 }
