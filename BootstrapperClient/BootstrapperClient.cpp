@@ -711,7 +711,7 @@ void BootstrapperClient::StartRobloxApp(bool fromInstall)
 	message("Starting Vexoni...");
 
 	LOG_ENTRY("Creating event");
-	CEvent robloxStartedEvent(NULL, TRUE, FALSE, _T("www.vexoni.com/robloxStartedEvent"));
+	CEvent robloxStartedEvent(NULL, TRUE, FALSE, _T("www.roblox.com/robloxStartedEvent"));
 	LOG_ENTRY("Resetting event");
 	robloxStartedEvent.Reset();
 
