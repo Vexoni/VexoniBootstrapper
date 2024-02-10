@@ -1,6 +1,5 @@
 #pragma once
 #include "Bootstrapper.h"
-#include "CountersClient.h"
 #include "WindowsStudioInstallerSettings.h"
 #include "SharedLauncher.h"
 
@@ -19,7 +18,6 @@ private:
 	std::wstring _protocolHandlerScheme;
 
 	WindowsStudioInstallerSettings settings;
-	boost::scoped_ptr<CountersClient> counters;
 
 	void registerFileTypes();
 	void unregisterFileTypes();

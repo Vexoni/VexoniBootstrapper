@@ -1285,14 +1285,11 @@ void BootstrapperClient::checkStudioForUninstall(CRegKey &hk)
 void BootstrapperClient::RegisterEvent(const TCHAR *eventName)
 {
 	LOG_ENTRY1("BootstrapperClient::RegisterEvent event=%S", eventName);
-	counters->registerEvent(eventName, settings.GetValueCountersFireImmediately());
 }
 
 void BootstrapperClient::initialize()
 {
 	LOG_ENTRY("BootstrapperClient::initialize");
-	counters.reset(new CountersClient(BaseHost(), "314B192B-D17A-4921-ABF9-C6F6264E5110", &logger));
-
 	{
 		proxyModule.appName = "RobloxProxy";
 		proxyModule.fileName = _T("RobloxProxy.DLL");
@@ -1333,13 +1330,15 @@ void BootstrapperClient::FlushEvents()
 		load = 100;
 	}
 
-	if (load > 0) 
+	// i stripped countersclient lol - aep
+	/*if (load > 0)
 	{
 		if ((rand() % 100/load) == 0)
 		{
 			counters->reportEvents();
 		}
 	}
+	*/
 }
 
 bool BootstrapperClient::PerModeLoggingEnabled() {

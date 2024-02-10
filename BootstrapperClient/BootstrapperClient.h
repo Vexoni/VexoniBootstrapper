@@ -1,7 +1,6 @@
 #pragma once
 #include "Bootstrapper.h"
 #include "ClientInstallerSettings.h"
-#include "CountersClient.h"
 #include "SharedLauncher.h"
 
 
@@ -34,7 +33,6 @@ private:
 	int endYear, endMonth, endDay;
 
 	ClientInstallerSettings settings;
-	boost::scoped_ptr<CountersClient> counters;
 	ComModule proxyModule;
 	ComModule proxyModule64;
 
