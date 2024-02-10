@@ -125,7 +125,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,6,3,4
+ FILEVERSION 1,6,3,5
  PRODUCTVERSION 1,6,0,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
@@ -143,8 +143,8 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Vexoni"
             VALUE "FileDescription", "Vexoni"
-            VALUE "FileVersion", "1, 6, 3, 4"
-            VALUE "LegalCopyright", "(C) 2023 Vexoni Corporation.  All rights reserved."
+            VALUE "FileVersion", "1, 6, 3, 5"
+            VALUE "LegalCopyright", "(C) 2024 Vexoni Corporation.  All rights reserved."
             VALUE "OriginalFilename", "Vexoni.exe"
             VALUE "ProductName", "Vexoni Bootstrapper"
             VALUE "ProductVersion", "1, 6, 0, 0"
