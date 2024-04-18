@@ -1131,11 +1131,13 @@ void BootstrapperClient::DeployComponents(bool isUpdating, bool commitData)
 	createDirectory((programDirectory() + _T("2021E")).c_str());
 	createDirectory((programDirectory() + _T("2019L")).c_str());
 	createDirectory((programDirectory() + _T("2015E")).c_str());
+	createDirectory((programDirectory() + _T("2018L")).c_str());
 	// Download files
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("VexoniApp.zip"), _T("2017L"))); // 2017L
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("VexoniApp2021E.zip"), _T("2021E"))); // 2021E
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("VexoniApp2019L.zip"), _T("2019L"))); // 2019L
 	files.push_back(std::pair<std::wstring, std::wstring>(_T("VexoniApp2015E.zip"), _T("2015E"))); // 2015E
+	files.push_back(std::pair<std::wstring, std::wstring>(_T("VexoniApp2018L.zip"), _T("2018L"))); // 2015E
 	DoDeployComponents(files, isUpdating, commitData);
 }
 
