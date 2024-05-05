@@ -1,2 +1,2 @@
-# Dyzion-Bootstrapper
- The source code to the Dyzion bootstrapper.
+# Vexoni-Bootstrapper
+ The source code to the Vexoni bootstrapper.
